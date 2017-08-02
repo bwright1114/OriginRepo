@@ -6,7 +6,7 @@ module.exports = function(app) {
   // parse application/json
   app.use(bodyParser.json());
 
-  //route for retrieving all students associated with a specific teacher
+  // route for retrieving all students under one teacher
   app.get('/api/students/:id', function(req, res) {
     var id = req.params.id;
     db.Students
@@ -18,12 +18,66 @@ module.exports = function(app) {
       });
   });
 
+<<<<<<< HEAD
   app.post('/api/students', function(req, res) {
     db.Students.create(req.body).then(function(students) {
+=======
+  // route for retrieving ONE student under one teacher
+  app.get('/api/students/:id/:studentid', function(req, res) {
+    console.log(res);
+    var id = req.params.id;
+    var studentid = req.params.studentid;
+    db.Students
+      .findOne({
+        where: { 
+          TeacherId: id,
+          id: studentid
+         }
+      })
+      .then(function(results) {
+
+        res.json(results);
+      });
+  });  
+
+  // route for adding a student
+  app.post('/api/students', function(req, res) {
+    db.Students.create(req.body)
+    .then(function(students) {
+>>>>>>> 8d12ef4884fe9c2f422b5192ef6d9eb8bb626d7a
       res.json(students);
     });
   });
 
+<<<<<<< HEAD
+=======
+  // route for getting one student's grades
+  app.get('/api/:teacherid/student/:studentid', function(req, res){
+    db.Students.findOne({
+        where: { 
+          TeacherId: req.params.teacherid,
+          id: req.params.studentid
+        },
+        include: [
+          {
+            model: db.Grades
+          }
+        ]
+      })
+    .then(function(results){
+      res.json(results);
+    });
+  });
+
+  // route for posting a new grade to specific student
+  app.post('/api/grades', function(req, res){
+    db.Grades.create(req.body)
+    .then(function(results){
+      res.json(results);
+    });
+  });
+
+>>>>>>> 8d12ef4884fe9c2f422b5192ef6d9eb8bb626d7a
   //route for retrieving all assignments
   app.get('/api/assignments', function(req, res) {
     db.Assignments.findAll({}).then(function(results) {
@@ -31,7 +85,11 @@ module.exports = function(app) {
     });
   });
 
+<<<<<<< HEAD
   // route for saving a new assignment
+=======
+  // route for adding a new assignment
+>>>>>>> 8d12ef4884fe9c2f422b5192ef6d9eb8bb626d7a
   app.post('/api/assignments', function(req, res) {
     db.Assignments
       .create({
@@ -42,6 +100,7 @@ module.exports = function(app) {
       });
   });
 
+  // route for getting Dates for the attendance page
   app.get('/api/attendance', function(req, res) {
     db.Dates
       .findAll({
@@ -63,26 +122,39 @@ module.exports = function(app) {
 
   // attendance
   app.post('/api/attendance', function(req, res) {
+    /* 
+          JSON sent from client should look like: 
+              [
+                {
+                  attendanceDate: "2017-07-31"
+                }, 
+                {
+                  studentId: req.body.StudentId, 
+                  presence: ["Present", "Present-Tardy", "Absent"]
+                }, 
+                {
+                  studentId: req.body.StudentId, 
+                  presence: ["Present", "Present-Tardy", "Absent"]
+                }
+              ]
+    */
     var currAttendance = req.body;
-    console.log(req.body);
     var attendanceDate = currAttendance[0].attendanceDate;
-    console.log(attendanceDate);
-    var studentData = currAttendance[1];
     db.Dates
       .create({
         schoolDates: attendanceDate
       })
       .then(function(savedDate) {
-        console.log(savedDate);
-        for (var i = 0; i < studentData.length; i++) {
+        for (var i = 1; i < currAttendance.length; i++) {
           db.Attendance
             .create({
               DateId: savedDate.id,
-              StudentId: studentData[i].StudentId,
-              presence: studentData[i].presence
+              StudentId: currAttendance[i].StudentId,
+              presence: currAttendance[i].presence
             })
             .then(function(createdAttendance) {
               console.log(createdAttendance.dataValues);
+              updatedAttendance.push(createdAttendance.dataValues);
             });
         }
         res.send(`sucessfully updated attendance for students for ${currAttendance[0].attendanceDate}`);
@@ -119,6 +191,10 @@ module.exports = function(app) {
   app.get('/api/absent/:id', function(req, res) {
     var id = req.params.id;
     db.Attendance
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8d12ef4884fe9c2f422b5192ef6d9eb8bb626d7a
       .count({
         where: {
           StudentId: id,

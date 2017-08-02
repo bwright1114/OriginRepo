@@ -7,6 +7,10 @@ h5 {
   font-family: 'Zilla Slab', serif;
 }
 
+.nav-color, .page-footer {
+    background-color: #99badd;  
+}
+
 a.brand-logo {
   font-size: 18px;
 }
@@ -162,6 +166,11 @@ nav {
   margin-bottom: 10px;
   font-size: 14px;
   font-family: 'Zilla Slab', serif;
+  background-color: #99badd;
+}
+
+a.teacher-menu:hover{
+  background-color: #81d4fa;
 }
 
 .extra-padding {

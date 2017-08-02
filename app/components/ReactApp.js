@@ -24,9 +24,9 @@ var ReactApp = React.createFactory(
         <div className="collection with-header center">
           <div className="collection-header">
             <h5>
-              Students
+              Students 
               <a href="#add-student-modal" className="">
-                <i className="material-icons orange-text">add_circle</i>
+                <i className="material-icons orange-text"> add_circle</i>
               </a>
             </h5>
           </div>

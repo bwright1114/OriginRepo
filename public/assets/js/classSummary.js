@@ -91,63 +91,49 @@ $(document).ready(function() {
 
     alert(theDate);
   });
-});
 
-//---------pop-up modal with student summary---------------
-$(document).on("click", ".listed-student", function() {
-  var thisId = $(this).attr("id");
-  console.log(thisId);
+  //---------pop-up modal with student summary---------------
+  $(document).on("click", ".listed-student", function() {
+    var studentId = $(this).attr("id");
+    console.log("student id", studentId)
+    // access table of ALL students
+    $.ajax({
+      url: "/api/students/" + id + "/" + studentId,
+      method: "GET"
+    }).done(function(data) {
+      console.log("ONE STUDENT'S", data);
+      var imgUrl = data.imgUrl;
+      var studentName = data.name;
+      var studentEmail = data.email;
 
-  // define index of student;
-  var index = thisId - 1;
-
-  // access table of ALL students
-  $.ajax({
-    url: "/api/students/",
-    method: "GET"
-  }).done(function(data) {
-    console.log(data);
-    console.log(index);
-
-    var students = data;
-    var imgUrl = students[index].imgUrl;
-    var studentName = students[index].name;
-    var studentEmail = students[index].email;
-
-    // add student information to modal
-    $(".pic-row").html("<img class='modal-img' src='" + imgUrl + "'>");
-    $(".name-row").html("<h2>" + studentName + "</h2>");
-    $(".email-row").html("<h5>" + studentEmail + "</h5>");
-
-    console.log(studentInfo);
-  });
+      // add student information to modal
+      $(".pic-row").html("<img class='modal-img' src='" + imgUrl + "'>");
+      $(".name-row").html("<h2>" + studentName + "</h2>");
+      $(".email-row").html("<h5>" + studentEmail + "</h5>");
+    });
 
   // Count absent
 
-  var id = thisId;
-  $.get(`/api/absent/${id}`).then(function(data) {
-    console.log(data);
+    $.get(`/api/absent/${studentId}`).then(function(data) {
+      // code to show data on the page
+      $(".absent-row").html("<h5> Days Absent: " + data + "</h5>");
 
-    // code to show data on the page
-    $(".absent-row").html("<h5> Days Absent: " + data + "</h5>");
+      // grabbing email info
+      var email = $(".email-row").text();
+      var name = $(".name-row").text();
 
+      // email student after clicking "email-btn"
+      $(document).on("click", ".email-btn", function() {
+        var link = "mailto:" + email +
+          "?Subject=" + "Class Notice for " + name +
+          "&body=" + "Hi " + name + ",";
 
-    // grabbing email info
-    var email = $(".email-row").text();
-    var name = $(".name-row").text();
-    console.log(email);
+        window.location.href = link;
+      })
 
-    // email student after clicking "email-btn"
-    $(document).on("click", ".email-btn", function() {
-      var link = "mailto:" + email +
-        "?Subject=" + "Class Notice for " + name +
-        "&body=" + "Hi " + name + ",";
+    });
 
-      window.location.href = link;
-    })
-
+    // open modal
+    $("#student-summary-modal").modal("open");
   });
-
-  // opem modal
-  $("#student-summary-modal").modal("open");
 });
