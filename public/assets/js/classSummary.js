@@ -48,7 +48,7 @@ $(document).ready(function() {
     $.post("/api/students", newStudent)
       // on success, run this callback
       .done(function(data) {
-        alert("Adding student...");
+        // alert("Adding student...");
       });
 
     // empty each input box by replacing the value with an empty string
@@ -95,14 +95,14 @@ $(document).ready(function() {
     $.post("/api/events", newEvent)
       // on success, run this callback
       .done(function(data) {
-        alert("Adding event...");
+        // alert("Adding event...");
       });
 
     // empty each input box by replacing the value with an empty string
     var theDate = $("#event-date").val().trim();
     console.log("this is the date" + theDate);
 
-    alert(theDate);
+    // alert(theDate);
   });
 
   //---------pop-up modal with student summary---------------
