@@ -1,14 +1,13 @@
 var AWS = require('aws-sdk');
-// var fs = require('fs');
 var fileUpload = require('express-fileupload');
 var path = require('path');
-var pathToJson = path.resolve(__dirname, '../awsConfig.json');
+// var pathToJson = path.resolve(__dirname, '../awsConfig.json');
 
 //look into the npm package formidable
 module.exports = function(app) {
   app.use(fileUpload());
 
-  AWS.config.loadFromPath(pathToJson);
+  // AWS.config.loadFromPath(pathToJson);
 
   function sendFileToAmazon(file) {
     var s3bucket = new AWS.S3({
