@@ -1,10 +1,10 @@
 'use strict';
 $(document).ready(function() {
-  function initializeHandlers() {
+  function initHandlers() {
     $('#submit-attendance-btn').on('click', submitAttendance);
-    datePickerInit();
     $('.modal').modal();
     $('select').material_select();
+    datePickerInit();
   }
 
   function datePickerInit() {
@@ -32,13 +32,13 @@ $(document).ready(function() {
     $.get(`/api/students/${id}`).then(function(data) {
       console.log(data);
       // code to show data on the page
-      var choices = ['Present', 'Tardy', 'Absent'];
+      var choices = ['Present', 'Present-Tardy', 'Absent'];
       for (var i = 0; i < data.length; i++) {
         var studentName = data[i]['name'];
         var studentId = data[i]['id'];
         var listItem = $(`
         <li class='collection-item'>
-          <p id=${studentId}>Student Id: ${studentId} ${studentName}</p>
+        <p id=${studentId}>Student Id: ${studentId} ${studentName}</p>
         <form>
           ${generateDropdown(studentId, studentName, studentName, choices[0])}
           ${generateDropdown(studentId, studentName, studentName + 1, choices[1])}
@@ -90,11 +90,11 @@ $(document).ready(function() {
     });
   }
 
-  initializeHandlers();
+  initHandlers();
   getTeacher();
 
-  // Future Facial Recognition Code
-  // =================================================
+  // ===================================================
+  // Future facial recognition
   var video = document.querySelector('#videoElement');
 
   navigator.getUserMedia =
@@ -105,13 +105,7 @@ $(document).ready(function() {
     navigator.oGetUserMedia;
 
   if (navigator.getUserMedia) {
-    navigator.getUserMedia(
-      {
-        video: true
-      },
-      handleVideo,
-      videoError
-    );
+    navigator.getUserMedia({ video: true }, handleVideo, videoError);
   }
 
   function handleVideo(stream) {
@@ -120,6 +114,6 @@ $(document).ready(function() {
 
   function videoError(e) {
     // do something
-    console.log("Thiis shit don't work!");
+    console.log('not working!');
   }
 });

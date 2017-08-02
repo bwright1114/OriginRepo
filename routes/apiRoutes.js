@@ -24,24 +24,12 @@ module.exports = function(app) {
     });
   });
 
-  //route for retrieving all students in general
-  app.get('/api/students/', function(req, res) {
-    var id = req.params.id;
-    db.Students
-      .findAll({})
-      .then(function(results) {
-        res.json(results);
-      });
-  });
-
   //route for retrieving all assignments
   app.get('/api/assignments', function(req, res) {
     db.Assignments.findAll({}).then(function(results) {
       res.json(results);
     });
   });
-
-
 
   // route for saving a new assignment
   app.post('/api/assignments', function(req, res) {
@@ -57,12 +45,16 @@ module.exports = function(app) {
   app.get('/api/attendance', function(req, res) {
     db.Dates
       .findAll({
-        include: [{
-          model: db.Attendance,
-          include: [{
-            model: db.Students
-          }]
-        }]
+        include: [
+          {
+            model: db.Attendance,
+            include: [
+              {
+                model: db.Students
+              }
+            ]
+          }
+        ]
       })
       .then(function(currDate) {
         res.json(currDate);
@@ -97,7 +89,6 @@ module.exports = function(app) {
       });
   });
 
-
   // Post event
   app.post('/api/events', function(req, res) {
     db.Cal_Events.create(req.body).then(function(events) {
@@ -105,41 +96,37 @@ module.exports = function(app) {
     });
   });
 
-
   // Get events
   app.get('/api/events/', function(req, res) {
-      var id = req.params.id;
-      var currentDate = new Date();
-      var endDate = moment().add(7, 'days').toDate();
-      console.log(endDate);
-      db.Cal_Events
-        .findAll({
-            where: {
-              eventDate: {
-                $between: [ currentDate, endDate]
-              }
-            }
-          })
-    .then(function(results) {
-      res.json(results);
-    });
+    var id = req.params.id;
+    var currentDate = new Date();
+    var endDate = moment().add(7, 'days').toDate();
+    console.log(endDate);
+    db.Cal_Events
+      .findAll({
+        where: {
+          eventDate: {
+            $between: [currentDate, endDate]
+          }
+        }
+      })
+      .then(function(results) {
+        res.json(results);
+      });
   });
 
-
-
-// Count Absent
-app.get('/api/absent/:id', function(req, res) {
-  var id = req.params.id;
-  db.Attendance
-
-    .count({
-      where: {
-        StudentId: id,
-        presence: 'Absent'
-      }
-    })
-    .then(function(results) {
-      res.json(results);
-    });
-});
+  // Count Absent
+  app.get('/api/absent/:id', function(req, res) {
+    var id = req.params.id;
+    db.Attendance
+      .count({
+        where: {
+          StudentId: id,
+          presence: 'Absent'
+        }
+      })
+      .then(function(results) {
+        res.json(results);
+      });
+  });
 };
