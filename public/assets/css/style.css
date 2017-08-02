@@ -24,10 +24,10 @@ a.brand-logo {
 }
 
 /* LANDING PAGE  */
-.home { 
+.home {
   /* min-height: 800px; */
   height: 100%;
-  background: url(../images/tp-bg.png) no-repeat center center fixed; 
+  background: url(../images/tp-bg.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -37,17 +37,17 @@ a.brand-logo {
 
 /* USED TO VERTICALLY AND HORIZONTALLY CENTER CONTENT */
 .centerContentParent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* USED TO VERTICALLY AND HORIZONTALLY CENTER CONTENT */
 .centerContentChild {
-	position: absolute;
-	top: 56%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #home-header {
@@ -56,23 +56,23 @@ a.brand-logo {
 }
 
 hr.style17 {
-	border-top: 1px solid #8c8b8b;
-	text-align: center;
+  border-top: 1px solid #8c8b8b;
+  text-align: center;
 }
 
 hr.style17:after {
-	content: '§';
-	display: inline-block;
-	position: relative;
-	top: -14px;
+  content: '§';
+  display: inline-block;
+  position: relative;
+  top: -14px;
   padding: 0 10px 0 10px;
   margin-bottom: 0;
-	background: #f0f0f0;
-	color: #8c8b8b;
-	font-size: 14px;
-	-webkit-transform: rotate(60deg);
-	-moz-transform: rotate(60deg);
-	transform: rotate(60deg);
+  background: #f0f0f0;
+  color: #8c8b8b;
+  font-size: 14px;
+  -webkit-transform: rotate(60deg);
+  -moz-transform: rotate(60deg);
+  transform: rotate(60deg);
 }
 
 .login-buttons a {
@@ -96,8 +96,9 @@ hr.style17:after {
   margin-top: -25px;
 }
 
-.showId, .showStudentName {
-  color: #424242 ;
+.showId,
+.showStudentName {
+  color: #424242;
   font-size: 16px;
 }
 
@@ -294,12 +295,16 @@ main {
   flex: 1 0 auto;
 }
 
-.modal-img{
+.modal-img {
   max-width: 300px;
 }
 
-.right-align{
+.right-align {
   margin-left: 10%;
+}
+
+#enter-date-label {
+  display: inline;
 }
 
 /* media tags */

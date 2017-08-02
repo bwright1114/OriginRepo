@@ -11,18 +11,34 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="./assets/css/materialize.min.css" type="text/css" rel="stylesheet" />
   <link href="./assets/css/style.css" type="text/css" rel="stylesheet" />
+
+  <style>
+    #container {
+      margin: 0px auto;
+      width: 500px;
+      height: 375px;
+      border: 10px #333 solid;
+    }
+
+    #videoElement {
+      width: 500px;
+      height: 375px;
+      background-color: #666;
+    }
+
+  </style>
 </head>
 
 <body>
   <%- include partials/header.ejs %>
-
-   <!--body  -->
+    <!--body  -->
     <main>
       <div class="container" id="attendance-container">
         <!-- PAGE HEADER  -->
         <div class="row center">
           <div class="col s12">
-            <h4>Attendance</h4>
+            <h4>Attendance </h4>
+            <a href="#modal-facial-recognition" class="waves-effect waves-light btn  light-blue lighten-3">Facial Recognition</a>
           </div>
         </div>
         <!-- HORIZONTAL RULE  -->
@@ -33,7 +49,8 @@
 
             <div class='row'>
               <div class='col s12'>
-                <p> Enter the date: </p>
+                <br>
+                <p id='enter-date-label'> Enter the date: </p>
                 <div class='input-field inline'>
                   <input type='text' class='datepicker' id='attendance-date' />
                   <label for="date">Date:</label>
@@ -44,15 +61,17 @@
             <div class='row'>
               <div class='col s12'>
                 <ul id="append-here" class="collection">
+
                 </ul>
               </div>
             </div>
             <a class="waves-effect waves-light btn" id='submit-attendance-btn'>Submit Attendance</a>
           </form>
         </div>
-        
+
       </div>
     </main>
+
 
     <!-- Footer -->
     <footer class="page-footer orange">
@@ -64,6 +83,22 @@
         </div>
       </div>
     </footer>
+
+    <!-- Modal for Facial Recognition -->
+    <div id="modal-facial-recognition" class="modal modal-fixed-footer">
+      <div class="modal-content center">
+        <div id="container">
+          <video autoplay="true" id="videoElement">
+
+          </video>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Start Recognition</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      </div>
+    </div>
+
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

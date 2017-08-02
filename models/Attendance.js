@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     presence: {
       type: DataTypes.ENUM,
       allowNull: false,
-      values: ['Present', 'Present-Tardy', 'Absent'],
+      values: ['Present', 'Tardy', 'Absent'],
       defaultValue: 'Present'
     }
   });
