@@ -24,6 +24,10 @@
       height: 375px;
       background-color: #666;
     }
+
+    #button-container {
+      margin-top: 30px;
+    }
   </style>
 </head>
 
@@ -35,26 +39,28 @@
         <!-- PAGE HEADER  -->
         <div class="row center">
           <div class="col s12">
-            <h4>Attendance </h4>
-            <a href="#modal-facial-recognition" class="waves-effect waves-light btn  light-blue lighten-3">Facial Recognition</a>
+            <h4>Attendance</h4>
           </div>
         </div>
         <!-- HORIZONTAL RULE  -->
         <hr class="style17">
-
+        <!-- FACIAL RECOGNITION BUTTON  -->
+        <div class="center" id="button-container">
+          <a href="#modal-facial-recognition" class="waves-effect waves-light btn menu-button">
+            Facial Recognition
+          </a>
+        </div>
+        <!-- FORM  -->
         <div class="row">
-          <form class="col s12">
-
-            <div class='row'>
-              <div class='col s12'>
-                <br>
-                <p id='enter-date-label'> Enter the date: </p>
-                <div class='input-field inline'>
-                  <input type='text' class='datepicker' id='attendance-date' />
-                  <label for="date">Date:</label>
-                </div>
+          <div class='col s12'>
+            <form>
+              <!-- <p id='enter-date-label'> Enter the date: </p> -->
+              <div class='input-field inline'>
+                <label for="date">Date:</label>
+                <input type='text' class='datepicker' id='attendance-date' placeholder="2017-08-01"/>
               </div>
-            </div>
+          </div>
+        </div>
 
             <div class='row'>
               <div class='col s12'>
@@ -63,7 +69,7 @@
                 </ul>
               </div>
             </div>
-            <a class="waves-effect waves-light btn tooltip" id='submit-attendance-btn'  data-tooltip="Please select on all students!">Submit Attendance</a>
+            <a class="menu-button waves-effect waves-light btn tooltip" id='submit-attendance-btn'  data-tooltip="Please select on all students!">Submit Attendance</a>
           </form>
         </div>
 
@@ -71,13 +77,12 @@
     </main>
 
 
-    <!-- Footer -->
-    <footer class="page-footer orange">
+    <footer class="page-footer">
       <div class="container" id="footer-filler">
       </div>
       <div class="footer-copyright">
         <div class="container center">
-          <a class="orange-text text-lighten-3" href="https://github.com/Teachers-Pet">Github</a>
+          <a class="white-text" href="https://github.com/Teachers-Pet">Github</a>
         </div>
       </div>
     </footer>

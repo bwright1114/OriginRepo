@@ -26,7 +26,7 @@ $(document).ready(function() {
   // add student to the class
   $("#add-student-btn").on("click", function(event) {
     var newStudent = {
-      name: $("#first-name").val().trim() + $("#last-name").val().trim(),
+      name: $("#first-name").val().trim() + " " + $("#last-name").val().trim(),
       imgUrl: $("#img-url").val().trim(),
       email: $("#email").val().trim(),
       TeacherId: id

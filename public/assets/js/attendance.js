@@ -38,7 +38,7 @@ $(document).ready(function() {
         var studentId = data[i]['id'];
         var listItem = $(`
         <li class='collection-item'>
-        <p id=${studentId}>Student Id: ${studentId} ${studentName}</p>
+        <p id=${studentId}>Student Id: ${studentId} | ${studentName}</p>
         <form>
           ${generateDropdown(studentId, studentName, studentName, choices[0])}
           ${generateDropdown(studentId, studentName, studentName + 1, choices[1])}

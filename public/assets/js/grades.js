@@ -10,7 +10,6 @@
 
         function assignmentSelect(data){
             for (var i = 0; i < data.length; i++){
-
                 var option = $("<option>");
                 option.text(data[i].assignName);
                 option.attr("value", data[i].id);
@@ -19,7 +18,7 @@
         }
 
         $('#add-grade').on('click', function(event) {
-
+            var assignmentId = $("#assignments-select").val();
             location.href = '/grades';
         });
 
@@ -33,7 +32,8 @@
 
             // new object to post to the database
             var newGrade = {
-                assignmentId: id,
+                assignmentId: assignmentId,
+                studentId: studentId,
                 grade: grade
             }
 
