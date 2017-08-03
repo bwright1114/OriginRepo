@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 require('./routes/authRoutes.js')(app, passport);
 // load passport strategies
 require('./config/passport/passport.js')(passport, db.Teachers);
-//load amazon web service route
+// //load amazon web service route
 require('./routes/upload')(app);
 // load api routes
 require('./routes/apiRoutes')(app);
@@ -111,7 +111,7 @@ db.sequelize
               db.Assignments
                 .bulkCreate([
                   {
-                    assignName: 'TechnicalInterview'
+                    assignName: 'Technical Interview'
                   }
                 ])
                 .then(function(student) {
@@ -139,37 +139,6 @@ db.sequelize
                       }
                     ])
                     .then(function(value) {
-                      // db.Dates
-                      //   .create({
-                      //     schoolDates: Date.now()
-                      //   })
-                      //   .then(function(currDate) {
-                      //     db.Attendance
-                      //       .bulkCreate([
-                      //         {
-                      //           presence: 'Absent',
-                      //           DateId: 1,
-                      //           StudentId: 1
-                      //         },
-                      //         {
-                      //           presence: 'Tardy-Excused',
-                      //           DateId: 1,
-                      //           StudentId: 2
-                      //         },
-                      //         {
-                      //           presence: 'Tardy-Unexcused',
-                      //           DateId: 1,
-                      //           StudentId: 3
-                      //         },
-                      //         {
-                      //           presence: 'Present',
-                      //           DateId: 1,
-                      //           StudentId: 4
-                      //         }
-                      //       ])
-                      //       .then(function(attendance) {
-                      // console.log(attendance);
-
                       console.log(value);
                       db.Students
                         .findAll({
@@ -202,5 +171,3 @@ db.sequelize
         });
     });
   });
-// });
-// });
