@@ -108,39 +108,25 @@ module.exports = function(app) {
 
   // attendance
   app.post('/api/attendance', function(req, res) {
-    /* 
-          JSON sent from client should look like: 
-              [
-                {
-                  attendanceDate: "2017-07-31"
-                }, 
-                {
-                  studentId: req.body.StudentId, 
-                  presence: ["Present", "Present-Tardy", "Absent"]
-                }, 
-                {
-                  studentId: req.body.StudentId, 
-                  presence: ["Present", "Present-Tardy", "Absent"]
-                }
-              ]
-    */
     var currAttendance = req.body;
+    console.log(currAttendance);
+    console.log(currAttendance[1]);
     var attendanceDate = currAttendance[0].attendanceDate;
+    var studentData = currAttendance[1];
     db.Dates
       .create({
         schoolDates: attendanceDate
       })
       .then(function(savedDate) {
-        for (var i = 1; i < currAttendance.length; i++) {
+        for (var i = 0; i < studentData.length; i++) {
           db.Attendance
             .create({
               DateId: savedDate.id,
-              StudentId: currAttendance[i].StudentId,
-              presence: currAttendance[i].presence
+              StudentId: studentData[i].StudentId,
+              presence: studentData[i].presence
             })
             .then(function(createdAttendance) {
               console.log(createdAttendance.dataValues);
-              updatedAttendance.push(createdAttendance.dataValues);
             });
         }
         res.send(`sucessfully updated attendance for students for ${currAttendance[0].attendanceDate}`);

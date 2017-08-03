@@ -1,11 +1,10 @@
-
 module.exports = function(sequelize, DataTypes) {
-  var Cal_Events = sequelize.define("Cal_Events", {
+  var Cal_Events = sequelize.define('Cal_Events', {
     eventName: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     eventDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATE
     }
   });
   Cal_Events.associate = function(models) {

@@ -1,5 +1,4 @@
 var AWS = require('aws-sdk');
-// var fs = require('fs');
 var fileUpload = require('express-fileupload');
 var path = require('path');
 var pathToJson = path.resolve(__dirname, '../awsConfig.json');
@@ -8,10 +7,11 @@ var pathToJson = path.resolve(__dirname, '../awsConfig.json');
 module.exports = function(app) {
   app.use(fileUpload());
 
-  AWS.config.loadFromPath(pathToJson);
-
+  // AWS.config.loadFromPath(pathToJson);
   function sendFileToAmazon(file) {
     var s3bucket = new AWS.S3({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       params: {
         Bucket: 'eyadtestbucket123'
       }
@@ -34,7 +34,6 @@ module.exports = function(app) {
   }
 
   app.post('/api/upload', function(req, res) {
-    console.log(req.files.pdf);
     sendFileToAmazon(req.files.pdf);
     res.status(200).send('PDF was successfully sent to AWS');
   });
