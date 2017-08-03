@@ -13,7 +13,8 @@ $(document).ready(function() {
   });
 
   // store logged in teacher's id and name
-  var id, teacherName;
+  var id, teacherName, studentId;  
+
   $.get("/api/teacher_data", function(data) {
     var teacherName = data.name;
     id = data.id;
@@ -107,14 +108,14 @@ $(document).ready(function() {
 
   //---------pop-up modal with student summary---------------
   $(document).on("click", ".listed-student", function() {
-    var studentId = $(this).attr("id");
-    console.log("student id", studentId);
-    // access table of ALL students
+    studentId = $(this).attr("id");
     $.ajax({
+      // get the student that was clicked
       url: "/api/students/" + id + "/" + studentId,
       method: "GET"
-    }).done(function(data) {
-      console.log("ONE STUDENT'S", data);
+    })
+    .done(function(data) {
+
       var imgUrl = data.imgUrl;
       var studentName = data.name;
       var studentEmail = data.email;
