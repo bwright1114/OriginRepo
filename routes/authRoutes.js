@@ -45,15 +45,10 @@ module.exports = function(app, passport) {
     res.render('attendance');
   });
 
-  // // only authenticated users should see schedule
-  // app.get('/schedule', isLoggedIn, function(req, res) {
-  //   res.sendFile(path.join(__dirname, '../public/schedule.html'));
-  // });
-
-  // // only authenticated users should see documents
-  // app.get('/documents', isLoggedIn, function(req, res) {
-  //   res.sendFile(path.join(__dirname, '../public/documents.html'));
-  // });
+    // only authenticated users should see attendance
+  app.get('/grades', isLoggedIn, function(req, res) {
+    res.render('grades');
+  });
 
   // when user logs out, destory the session and redirect to home
   app.get('/logout', function(req, res) {
