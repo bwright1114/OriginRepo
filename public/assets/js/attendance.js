@@ -21,21 +21,21 @@ $(document).ready(function() {
 
   function getTeacher() {
     $.get('/api/teacher_data').then(function(teacher) {
-      console.log(teacher);
       displayStudents(teacher);
     });
   }
 
   function displayStudents(teacher) {
-    console.log(teacher);
     var id = teacher.id;
     $.get(`/api/students/${id}`).then(function(data) {
       console.log(data);
       // code to show data on the page
-      var choices = ['Present', 'Present-Tardy', 'Absent'];
+      var choices = ['Present', 'Tardy', 'Absent'];
       for (var i = 0; i < data.length; i++) {
+        console.log(data);
         var studentName = data[i]['name'];
         var studentId = data[i]['id'];
+        console.log(studentId);
         var listItem = $(`
         <li class='collection-item'>
         <p id=${studentId}>Student Id: ${studentId} | ${studentName}</p>
@@ -78,7 +78,6 @@ $(document).ready(function() {
     submitAttendanceData.push(attendanceDate);
     submitAttendanceData.push(studentValues);
     console.log(submitAttendanceData);
-
     $.ajax({
       type: 'post',
       url: '/api/attendance',
@@ -86,8 +85,9 @@ $(document).ready(function() {
       contentType: 'application/json',
       dataType: 'json'
     }).then(function(response) {
-      console.log(response);
+      console.log('successfully sent to the server!');
     });
+    location.href = '/class';
   }
 
   initHandlers();
