@@ -58,6 +58,10 @@ require('./config/passport/passport.js')(passport, db.Teachers);
 // load api routes
 require('./routes/apiRoutes')(app);
 
+// db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0', null, { raw: true }).then(function(results) {
+//   db.sequelize.sync({ force: true });
+// });
+
 db.sequelize
   .sync({
     // Force true deletes your data every time you restart

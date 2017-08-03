@@ -22,13 +22,8 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Teachers.associate = function(models) {
-    Teachers.hasMany(models.Students, {
-      onDelete: 'cascade'
-    });
-
-    Teachers.hasMany(models.Cal_Events, {
-      onDelete: 'cascade'
-    });
+    Teachers.hasMany(models.Students);
+    Teachers.hasMany(models.Cal_Events);
   };
   return Teachers;
 };

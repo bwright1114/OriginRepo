@@ -5,9 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Assignments.associate = function(models) {
-    Assignments.hasMany(models.Grades, {
-      onDelete: 'cascade'
-    });
+    Assignments.hasMany(models.Grades);
   };
   return Assignments;
 };

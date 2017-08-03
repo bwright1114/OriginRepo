@@ -7,7 +7,11 @@ var pathToJson = path.resolve(__dirname, '../awsConfig.json');
 module.exports = function(app) {
   app.use(fileUpload());
 
-  AWS.config.loadFromPath(pathToJson);
+  // AWS.config.loadFromPath(pathToJson);
+  var s0 = new aws.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  });
 
   function sendFileToAmazon(file) {
     var s3bucket = new AWS.S3({
@@ -33,7 +37,6 @@ module.exports = function(app) {
   }
 
   app.post('/api/upload', function(req, res) {
-    console.log(req.files.pdf);
     sendFileToAmazon(req.files.pdf);
     res.status(200).send('PDF was successfully sent to AWS');
   });
