@@ -14,6 +14,7 @@ We used an agile-waterfall hybrid methodology to be able to complete this applic
 - Manages and stores assignments in database
 -  allows uploading of documents via AWS
 - Adds events to the teacher portal calendar
+
 **## Technologies**
 
 ### Client-side:
@@ -33,7 +34,7 @@ We used an agile-waterfall hybrid methodology to be able to complete this applic
 ### Database
 
 - MYSQL
-- Sequealize 
+- Sequelize 
 
 ### Authentication 
 
