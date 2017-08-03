@@ -4,6 +4,10 @@ To view the application click the link below:
 
 https://official-teacherspet.herokuapp.com/
 
+If you want to test app:
+username: jen@testteacher.com
+password: testpass
+
 We used an agile-waterfall hybrid methodology to be able to complete this application within at 3-week timeframe. 
 
 # **Quick synopsis of Teachers Pet**
@@ -33,7 +37,7 @@ We used an agile-waterfall hybrid methodology to be able to complete this applic
 ### Database
 
 - MYSQL
-- Sequealize 
+- Sequelize 
 
 ### Authentication 
 
