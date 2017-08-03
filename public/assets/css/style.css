@@ -7,9 +7,19 @@ h5 {
   font-family: 'Zilla Slab', serif;
 }
 
-.nav-color, .page-footer {
-    background-color: #99badd;  
+.nav-color,
+.page-footer {
+  background-color: #99badd;
 }
+a.footerWords {
+  color: white;
+   font-family: 'Zilla Slab', serif;
+}
+.page-footer {
+color: white;
+font: 10px;
+}
+
 
 footer {
   font-size: 12px;
@@ -190,7 +200,8 @@ nav {
   background-color: #73a0d0;
 }
 
-a.teacher-menu:hover, .menu-button:hover {
+a.teacher-menu:hover,
+.menu-button:hover {
   background-color: #99badd;
 }
 
@@ -346,6 +357,11 @@ main {
 
 #enter-date-label {
   display: inline;
+}
+
+.eventTitle {
+  font-size: 12px;
+  font-style: italic;
 }
 
 /* media tags */

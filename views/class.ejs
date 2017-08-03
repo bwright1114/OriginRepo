@@ -46,41 +46,44 @@
           </div>
         </div>
         <!-- ALL STUDENTS LISTED HERE  -->
-                <!-- React Component -->
-                <div id='main-mount'>
-                  <div>
-                    <%- reactOutput -%>
-                  </div>
-                </div>
-                <!-- BOTTOM PANELS  -->
-                <div class="row">
-                  <!-- PANEL WITH DOCUMENTS -->
-                  <div class="col s6" id="documents">
-                    <div class="card white">
-                      <div class="card-content black-text">
-                        <span class="card-title"><h5>Documents</h5></span>
-                        <ul id='append-urls-here'>
-                        </ul>
-                      </div>
-                      <div class="card-action orange-text text-accent-2">
-                        <a href="#document-modal">Upload a Document</a>
-                        <a href="#document-modal" class="right">
+        <!-- React Component -->
+        <div id='main-mount'>
+          <div>
+            <%- reactOutput -%>
+          </div>
+        </div>
+        <!-- BOTTOM PANELS  -->
+        <div class="row">
+          <!-- PANEL WITH DOCUMENTS -->
+          <div class="col s6" id="documents">
+            <div class="card white">
+              <div class="card-content black-text">
+                <span class="card-title"><h5>Documents</h5></span>
+                <ul id='append-urls-here'>
+                </ul>
+              </div>
+              <div class="card-action orange-text text-accent-2">
+                <a href="#document-modal">Upload a Document</a>
+                <a href="#document-modal" class="right">
               <i class="material-icons">add_circle</i></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!--PANEL WITH EVENTS / ANNOUNCEMENTS  -->
-                  <div class="col s6">
-                    <div class="card white">
-                      <div class="card-content black-text">
-                        <span class="card-title"><h5>Calendar</h5></span>
-                        <ul id="schedule">
+              </div>
+            </div>
+          </div>
+          <!--PANEL WITH EVENTS / ANNOUNCEMENTS  -->
+          <div class="col s6">
+            <div class="card white">
+              <div class="card-content black-text">
 
-                        </ul>
-                      </div>
-                      <div class="card-action orange-text text-accent-2">
-                        <a href="#add-event-modal">Add an Event</a>
-                        <a href="#add-event-modal" class="right">
+                <span class="card-title"><h5>Upcoming Events</h5></span>
+                <p class=eventTitle>(Next Seven Days)</p>
+
+                <ul id="schedule">
+
+                </ul>
+              </div>
+              <div class="card-action orange-text text-accent-2">
+                <a href="#add-event-modal">Add an Event</a>
+                <a href="#add-event-modal" class="right">
               <i class="material-icons">add_circle</i></a>
               </div>
             </div>
@@ -91,13 +94,14 @@
       <!-- end of container -->
     </main>
     <!-- Footer -->
-    <footer class="page-footer orange">
+    <footer class="page-footer">
          <div class="container center">
-          <a class="orange-text text-lighten-4" href="\class">&copy; Teachers-Pet</a>
+          <a class="footerWords" href="\class">&copy; Teachers-Pet</a>
             <div class='row'>
-          <a class="orange-text text-lighten-4" href="https://github.com/Teachers-Pet/TeachersPet">Reference Work on Github</a>
+          <a class="footerWords" href="https://github.com/Teachers-Pet/TeachersPet">Reference Work on Github</a>
             </div>
         </div>
+      </div>
     </footer>
 
     <!-- STUDENT SUMMARY modal -->
@@ -147,7 +151,7 @@
             </div>
             <!--Last Name-->
             <div class="input-field col s5">
-              <input name="last-name" id="last-name" type="text"</input>
+              <input name="last-name" id="last-name" type="text" </input>
               <label for="last-name">Last Name:</label>
             </div>
           </div>
@@ -196,8 +200,7 @@
             </div>
             <!-- FORM SUBMIT BUTTON-->
             <div class="col s2 right-align">
-              <button id="submit-event-btn" class="btn waves-effect waves-light menu-button" type="submit"
-               value="submit event">Add
+              <button id="submit-event-btn" class="btn waves-effect waves-light menu-button" type="submit" value="submit event">Add
                 <i class="material-icons right">input</i>
               </button>
             </div>
@@ -244,6 +247,7 @@
     <script src="/assets/js/materialize.min.js "></script>
     <script src='/assets/js/classSummary.js'></script>
     <script src='/assets/js/bundle.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 </body>
 
 </html>

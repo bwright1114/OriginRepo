@@ -1,12 +1,25 @@
 $(document).ready(function() {
+  //______Pull events_______
+  $.get("/api/events/").then(function(data) {
+    for (var i = 0; i < data.length; i++) {
+      console.log(data[i]);
+      var rawDate = data[i].eventDate;
+      var formattedDate = moment(rawDate).format("MMMM DD, YYYY");
+      var event = `<li class=event-lst> ${data[i]
+        .eventName} | ${formattedDate} </li>`;
+      console.log("event :" + data[i].eventName);
+      $("#schedule").append(event);
+    }
+  });
+
   // store logged in teacher's id and name
-  var id, teacherName;  
+  var id, teacherName;
   $.get("/api/teacher_data", function(data) {
     var teacherName = data.name;
     id = data.id;
     $("#teacher-name").text(teacherName + "'s");
   });
-  
+
   // initialize materialize
   $(".modal").modal();
   $(".button-collapse ").sideNav();
@@ -35,7 +48,7 @@ $(document).ready(function() {
     $.post("/api/students", newStudent)
       // on success, run this callback
       .done(function(data) {
-        alert("Adding student...");
+        // alert("Adding student...");
       });
 
     // empty each input box by replacing the value with an empty string
@@ -82,20 +95,20 @@ $(document).ready(function() {
     $.post("/api/events", newEvent)
       // on success, run this callback
       .done(function(data) {
-        alert("Adding event...");
+        // alert("Adding event...");
       });
 
     // empty each input box by replacing the value with an empty string
     var theDate = $("#event-date").val().trim();
     console.log("this is the date" + theDate);
 
-    alert(theDate);
+    // alert(theDate);
   });
 
   //---------pop-up modal with student summary---------------
   $(document).on("click", ".listed-student", function() {
     var studentId = $(this).attr("id");
-    console.log("student id", studentId)
+    console.log("student id", studentId);
     // access table of ALL students
     $.ajax({
       url: "/api/students/" + id + "/" + studentId,
@@ -112,7 +125,7 @@ $(document).ready(function() {
       $(".email-row").html("<h5>" + studentEmail + "</h5>");
     });
 
-  // Count absent
+    // Count absent
 
     $.get(`/api/absent/${studentId}`).then(function(data) {
       // code to show data on the page
@@ -124,13 +137,19 @@ $(document).ready(function() {
 
       // email student after clicking "email-btn"
       $(document).on("click", ".email-btn", function() {
-        var link = "mailto:" + email +
-          "?Subject=" + "Class Notice for " + name +
-          "&body=" + "Hi " + name + ",";
+        var link =
+          "mailto:" +
+          email +
+          "?Subject=" +
+          "Class Notice for " +
+          name +
+          "&body=" +
+          "Hi " +
+          name +
+          ",";
 
         window.location.href = link;
-      })
-
+      });
     });
 
     // open modal
