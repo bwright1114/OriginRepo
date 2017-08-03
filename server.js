@@ -54,13 +54,9 @@ require('./routes/authRoutes.js')(app, passport);
 // load passport strategies
 require('./config/passport/passport.js')(passport, db.Teachers);
 //load amazon web service route
-// require('./routes/upload')(app);
+require('./routes/upload')(app);
 // load api routes
 require('./routes/apiRoutes')(app);
-
-// db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0', null, { raw: true }).then(function(results) {
-//   db.sequelize.sync({ force: true });
-// });
 
 db.sequelize
   .sync({
