@@ -1,12 +1,12 @@
-#  **Teachers Pet is an intuitive application. This app is used as a class management tool. It allows teachers to be able to manage their students. grades, attendance, assignments, and be able to send and/or receive documentation.**
+#  **Teachers Pet is an intuitive application. This app is used as a class management tool. It allows teachers to be able to manage their students, grades, attendance, assignments, and be able to send and/or receive documentation.**
 
 To view the application click the link below:
 
 https://official-teacherspet.herokuapp.com/
 
-If you want to test app:
+**If you want to test app:
 username: jen@testteacher.com
-password: testpass
+password: testpass**
 
 We used an agile-waterfall hybrid methodology to be able to complete this application within at 3-week timeframe. 
 
